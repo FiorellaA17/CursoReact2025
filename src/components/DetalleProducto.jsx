@@ -16,14 +16,36 @@ const fadeIn = keyframes`
 
 // Styled-components
 const Precio = styled.h3`
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #1e88e5;
-  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  #0077ff;
+  margin: 6px 0 10px;
 
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
+ /* Efecto shimmer en tonos azules */
+background: linear-gradient(
+  90deg,
+  #0077ff,
+  #4ba8ff,
+  #80c8ff,
+  #0077ff
+);
+background-size: 250%;
+-webkit-background-clip: text;
+color: transparent;
+
+animation: shimmer 3.2s ease-in-out infinite;
+
+@keyframes shimmer {
+  0% {
+    background-position: 0%;
   }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
 `;
 
 const DetallesLista = styled.ul`
@@ -117,7 +139,7 @@ const DetalleProducto = () => {
 
   useEffect(() => {
     setCargando(true);
-    fetch(`https://68d5d31de29051d1c0afa93e.mockapi.io/productos/${id}`)
+    fetch(`https://692f33a791e00bafccd6e6e4.mockapi.io/productos/${id}`)
       .then(res => res.json())
       .then(data => {
         setProducto(data);

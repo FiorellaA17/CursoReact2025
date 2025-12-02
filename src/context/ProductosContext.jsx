@@ -7,7 +7,7 @@ export const ProductosProvider = ({ children }) => {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
-  const API = "https://68d5d31de29051d1c0afa93e.mockapi.io/productos";
+  const API = "https://692f33a791e00bafccd6e6e4.mockapi.io/productos";
 
   //   CARGAR PRODUCTOS
 
@@ -24,7 +24,6 @@ export const ProductosProvider = ({ children }) => {
 
       const datos = await respuesta.json();
 
-      // Asegurar que todos tengan id numérico o string consistente
       const normalizados = datos.map(p => ({
         ...p,
         id: String(p.id),
@@ -40,13 +39,10 @@ export const ProductosProvider = ({ children }) => {
     }
   };
 
-  // Cargar una sola vez
   useEffect(() => {
     cargarProductos();
   }, []);
 
-  
-  //   AGREGAR
   const agregarProducto = async (producto) => {
     try {
       setError(null);
@@ -71,8 +67,6 @@ export const ProductosProvider = ({ children }) => {
     }
   };
 
-
-  //   EDITAR
   const editarProducto = async (producto) => {
     try {
       setError(null);
@@ -101,8 +95,6 @@ export const ProductosProvider = ({ children }) => {
     }
   };
 
- 
-  //   ELIMINAR
   const eliminarProducto = async (id) => {
     const confirmar = window.confirm("¿Estás seguro de eliminar este producto?");
 

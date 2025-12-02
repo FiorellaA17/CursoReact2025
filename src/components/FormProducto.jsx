@@ -79,7 +79,6 @@ const FormProducto = ({ productoInicial = {}, modo = "agregar", onCerrar }) => {
                   name="imagen"
                   value={producto.imagen || ""}
                   onChange={manejarChange}
-                  placeholder="https://ejemplo.com/imagen.jpg"
                 />
               </Form.Group>
             </Col>

@@ -1,3 +1,36 @@
+/* Efecto shimmer azul para el precio */
+.precio {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
+
+  background: linear-gradient(
+    90deg,
+    #0077ff,
+    #4ba8ff,
+    #80c8ff,
+    #0077ff
+  );
+  background-size: 250%;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: shimmer 3.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
 .cardDetalle {
   width: 100%;
   box-sizing: border-box;
@@ -17,14 +50,6 @@
   width: 100%;
   max-height: 400px;
   object-fit: contain;
-}
-
-.precio {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #1e88e5;
-  margin-top: 0.5rem;
-  text-align: center;
 }
 
 .detallesLista {
