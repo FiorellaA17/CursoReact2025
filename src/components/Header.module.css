@@ -1,0 +1,140 @@
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 0 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e9e9e9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #111;
+  letter-spacing: 1px;
+  transition: 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  color: #ff6b6b;
+}
+
+.rightZone {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userTextDesktop {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  font-family: "Poppins", sans-serif;
+}
+
+.loginBtnDesktop,
+.logoutBtnDesktop {
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  transition: 0.25s ease;
+}
+
+.loginBtnDesktop {
+  background: #111;
+  color: white;
+  text-decoration: none;
+}
+
+.loginBtnDesktop:hover {
+  background: #ff6b6b;
+}
+
+.logoutBtnDesktop {
+  background: linear-gradient(135deg, #ff6b6b, #ff3d3d);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.logoutBtnDesktop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+.carritoWrapper {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.icono {
+  width: 28px;
+  height: 28px;
+  transition: 0.2s ease;
+  fill: #111;
+}
+
+.carritoWrapper:hover .icono {
+  transform: scale(1.1);
+  fill: #ff6b6b;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: #111;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .userTextDesktop,
+  .loginBtnDesktop,
+  .logoutBtnDesktop {
+    display: none;
+  }
+}

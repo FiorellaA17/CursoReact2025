@@ -1,54 +1,44 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
-import ProductList from './components/ProductList'
-import Carrito from './components/Carrito'
-import ProductoDetalle from './components/ProductoDetalle'
-import Checkout from './components/checkout'
-import './App.css'
+import Carrito from "./components/Carrito";
+import Header from "./components/Header";
+import Inicio from "./pages/Inicio";
+import Login from "./pages/Login";
+import ProductoDetalle from "./pages/ProductoDetalle";
+import Admin from "./pages/Admin";
 
+import { Routes, Route } from "react-router-dom";
+import RutaProtegida from "./components/RutaProtegida";
+import Footer from "./components/Footer";
 
 function App() {
-  const [carrito, setCarrito] = useState([])
-
-  const agregarAlCarrito = (producto) => {
-  setCarrito((prev) => {
-    const existe = prev.find((p) => p.id === producto.id)
-    if (existe) {
-      return prev.map((p) => 
-        p.id === producto.id ? { ...p, cantidad: p.cantidad + 1 } : p
-      ) 
-    } else {
-      return [...prev, { ...producto, cantidad: 1 }]
-    }
-  })
-}
-
-  const vaciarCarrito = () => {
-    setCarrito([])
-  }
-
   return (
-     <Router>
-      <div className="container">
-        <h1>Tienda de Ecommerce</h1>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/productos/:id" element={<ProductoDetalle />} />
 
-        {/* Navbar */}
-        <nav className="navbar">
-          <Link to="/" className="nav-link">Productos</Link>
-          <Link to="/carrito" className="nav-link">Carrito ({carrito.length})</Link>
-        </nav>
-
-
-        {/* Rutas */}
-        <Routes>
-          <Route path="/" element={<ProductList agregarAlCarrito={agregarAlCarrito} />} />
-          <Route path="/carrito" element={<Carrito carrito={carrito} vaciarCarrito={vaciarCarrito} />} />
-          <Route path="/producto/:id" element={<ProductoDetalle agregarAlCarrito={agregarAlCarrito} />} />
-          <Route path="/checkout" element={<Checkout carrito={carrito} />} />
-        </Routes>
-      </div>
-    </Router>
-  )
+        {/* Rutas protegidas */}
+        <Route
+          path="/carrito"
+          element={
+            <RutaProtegida>
+              <Carrito />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <RutaProtegida>
+              <Admin />
+            </RutaProtegida>
+          }
+        />
+      </Routes>
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;
